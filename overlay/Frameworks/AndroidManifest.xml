@@ -4,7 +4,9 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.overlay.mayfly">
-    <overlay android:targetPackage="android"
-                   android:isStatic="true"
-                   android:priority="700"/>
+     
+    <overlay
+        android:isStatic="true"
+        android:priority="850"
+        android:targetPackage="android" />
 </manifest>
