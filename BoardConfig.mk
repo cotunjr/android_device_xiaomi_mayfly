@@ -44,4 +44,5 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 # Screen density
 TARGET_SCREEN_DENSITY := 440
 
-
+# Vibrator
+$(call soong_config_set, XIAOMI_VIBRATOR, USE_EFFECT_STREAM, true)

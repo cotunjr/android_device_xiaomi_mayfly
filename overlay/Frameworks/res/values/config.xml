@@ -10,7 +10,7 @@
          -2 is invalid so setting will resort to int value specified above.
          Set this to 0.0 to allow screen to go to minimal brightness.
          The user is forbidden from setting the brightness below this level. -->
-    <item format="float" name="config_screenBrightnessSettingMinimumFloat" type="dimen">0.000915639</item>
+    <item format="float" name="config_screenBrightnessSettingMinimumFloat" type="dimen">0.000854597</item>
 
     <!-- Maximum screen brightness allowed by the power manager.
          -2 is invalid so setting will resort to int value specified above.
@@ -34,7 +34,7 @@
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
     <fraction name="config_autoBrightnessAdjustmentMaxGamma">100.0%</fraction>
-    <item format="float" name="config_screenBrightnessDimFloat" type="dimen">0.000915639</item>
+    <item format="float" name="config_screenBrightnessDimFloat" type="dimen">0.000854597</item>
 
     <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 control points as follows:
@@ -186,9 +186,9 @@
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
     <array name="config_autoBrightnessDisplayValuesNits">
-        <item>2.9</item>
-        <item>3.5</item>
-        <item>3.8</item>
+        <item>3.9</item>
+        <item>4.6</item>
+        <item>5.3</item>
         <item>17.6</item>
         <item>24.3</item>
         <item>29.7</item>
@@ -313,7 +313,7 @@
 
          This array should be equal in size to config_screenBrightnessBacklight -->
     <array name="config_screenBrightnessNits">
-        <item>2.9</item>
+        <item>3.9</item>
         <item>1000.0</item>
     </array>
 
@@ -373,7 +373,7 @@
     </integer-array>
 
     <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
-    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">co.aospa.sensor.udfps</string>
+     <string name="config_dozeUdfpsLongPressSensorType" translatable="false">co.aospa.sensor.udfps</string>
 
     <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
@@ -399,20 +399,7 @@
 
          @see https://www.w3.org/TR/SVG/paths.html#PathData
          -->
-    <string name="config_mainBuiltInDisplayCutout" translatable="false">M -33 52 a 33 33 0 1 0 66 0 a 33 33 0 1 0 -66 0 Z</string>
-
-    <!--Like config_mainBuiltInDisplayCutout, but this path is used to report the
-        one single bounding rect per device edge to the app via
-        {@link DisplayCutout#getBoundingRect}. Note that this path should try to match the visual
-        appearance of the cutout as much as possible, and may be smaller than
-        config_mainBuiltInDisplayCutout
-        -->
-    <string name="config_mainBuiltInDisplayCutoutRectApproximation">M 0,0 H -33 V 87 H 33 V 0 H 0 Z</string>
-
-    <!--Whether the display cutout region of the main built-in display should be forced to
-        black in software (to avoid aliasing or emulate a cutout that is not physically existent).
-        -->
-    <bool name="config_fillMainBuiltInDisplayCutout">true</bool>
+    <string name="config_mainBuiltInDisplayCutout" translatable="false">M 0,0 H -42 V 108 H 42 V 0 H 0 Z</string>
 
     <!-- The default refresh rate for a given device. Change this value to set a higher default
          refresh rate. If the hardware composer on the device supports display modes with a higher
@@ -430,13 +417,6 @@
          non-zero. -->
     <integer name="config_defaultPeakRefreshRate">120</integer>
 
-    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
-    <integer-array name="config_udfps_sensor_props" translatable="false" >
-        <item>540</item>
-        <item>2163</item>
-        <item>107</item>
-    </integer-array>
-
     <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
          when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
          where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
@@ -444,4 +424,18 @@
     <string-array name="config_biometric_sensors" translatable="false">
         <item>0:2:15</item>
     </string-array>
+
+    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
+    <integer-array name="config_udfps_sensor_props" translatable="false">
+        <item>720</item>
+        <item>2480</item>
+        <item>134</item>
+    </integer-array>
+
+    <!-- Build fingerprint from stock ROM -->
+    <string name="config_stockFingerprint" translatable="false">Xiaomi/mayfly/mayfly:14/UKQ1.231003.002/V816.0.7.0.ULTCNXM:user/release-keys</string>
+
+    <!-- Device model (Build.MODEL) to spoof for netflix -->
+    <string name="config_netflixSpoofModel" translatable="false">>2206123SC</string>
+
 </resources>
