@@ -20,9 +20,6 @@ include device/xiaomi/sm8450-common/BoardConfigCommon.mk
 # Include proprietary files
 include vendor/xiaomi/mayfly/BoardConfigVendor.mk
 
-# HIDL
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/manifest.xml
-
 # OTA
 TARGET_OTA_ASSERT_DEVICE := mayfly|2206123SC
 
@@ -46,3 +43,6 @@ TARGET_SCREEN_DENSITY := 440
 
 # Vibrator
 $(call soong_config_set, XIAOMI_VIBRATOR, USE_EFFECT_STREAM, true)
+
+# Bootloader
+TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/configs/board/board-info.txt

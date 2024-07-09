@@ -1,0 +1,1 @@
+require board=cape|mayfly|2206123SC
