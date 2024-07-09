@@ -15,9 +15,32 @@
 # Inherit from sm8450-common
 $(call inherit-product, device/xiaomi/sm8450-common/common.mk)
 
-# Overlay
+# Call the proprietary setup
+$(call inherit-product, vendor/xiaomi/mayfly/mayfly-vendor.mk)
+
+# Camera
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.product.mod_device=mayfly
+
+# Display - timers
+PRODUCT_ODM_PROPERTIES += \
+    ro.surface_flinger.set_idle_timer_ms?=1000 \
+    ro.surface_flinger.set_touch_timer_ms?=200
+
+# Display - DC Dimming
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.display.dc_dimming_supported=true
+
+# Graphics
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.taro.api31
+
+# Kernel
+KERNEL_PREBUILT_DIR := $(LOCAL_PATH)-kernel
+
+
+# Overlays
 PRODUCT_PACKAGES += \
-    ApertureResMayfly \
     FrameworksResMayfly \
     NfcResMayfly \
     SettingsProviderResMayfly \
@@ -25,45 +48,42 @@ PRODUCT_PACKAGES += \
     SystemUIResMayfly \
     WifiResMayfly \
     AOSPAMayflyFrameworksOverlay
-# Sensors
+
+# NFC
+TARGET_NFC_SKU := mayfly
+
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    persist.nfc.camera.pause_polling=true
+
+# Powershare
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.xiaomi-multihal \
-    sensors.xiaomi
+    vendor.aospa.powershare-service
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
+    $(LOCAL_PATH)/rootdir/etc/init.mayfly.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.mayfly.rc
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.xiaomi
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.audio.us.proximity=true \
+    ro.vendor.audio.us.proximity_waitfornegative_feature=true \
+    vendor.audio.ultrasound.stoplatency=60 \
+    vendor.audio.ultrasound.usync=1000
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-# Call the proprietary setup
-$(call inherit-product, vendor/xiaomi/mayfly/mayfly-vendor.mk)
 
-
-# Camera
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.product.mod_device=mayfly
 
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
-
-
-# Display
-PRODUCT_ODM_PROPERTIES += \
-    vendor.display.disable_3d_adaptive_tm=0 \
-    vendor.display.enable_fb_scaling=1 \
-    vendor.display.enable_rounded_corner=0 \
-    vendor.display.enable_optimize_refresh=1
-
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.display.ai_disp.enable=true \
-    ro.vendor.display.hwc_thermal_dimming=true \
-    ro.vendor.display.mi_calib.enable=true \
-    ro.vendor.display.nature_mode.enable=true \
-    ro.vendor.histogram.enable=true \
-    ro.vendor.sre.enable=true \
-    ro.vendor.xiaomi.bl.poll=true
 
 # Fingerprint
 PRODUCT_PACKAGES += \
