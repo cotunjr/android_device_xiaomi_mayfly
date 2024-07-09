@@ -1,1 +1,0 @@
-require board=taro|mayfly|2206123SC
