@@ -46,8 +46,7 @@ PRODUCT_PACKAGES += \
     SettingsProviderResMayfly \
     SettingsResMayfly \
     SystemUIResMayfly \
-    WifiResMayfly \
-    AOSPAMayflyFrameworksOverlay
+    WifiResMayfly 
 
 # NFC
 TARGET_NFC_SKU := mayfly
