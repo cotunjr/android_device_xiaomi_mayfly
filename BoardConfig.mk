@@ -39,7 +39,7 @@ SOONG_CONFIG_SENSORS_XIAOMI_USES_UDFPS_SENSOR := true
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Screen density
-TARGET_SCREEN_DENSITY := 560
+TARGET_SCREEN_DENSITY := 440
 
 # Vibrator
 $(call soong_config_set, XIAOMI_VIBRATOR, USE_EFFECT_STREAM, true)
@@ -47,5 +47,3 @@ $(call soong_config_set, XIAOMI_VIBRATOR, USE_EFFECT_STREAM, true)
 # Bootloader
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/configs/board/board-info.txt
 
-# Screen density
-TARGET_SCREEN_DENSITY := 560
