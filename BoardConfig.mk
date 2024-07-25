@@ -46,3 +46,6 @@ $(call soong_config_set, XIAOMI_VIBRATOR, USE_EFFECT_STREAM, true)
 
 # Bootloader
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/configs/board/board-info.txt
+
+# Screen density
+TARGET_SCREEN_DENSITY := 560
