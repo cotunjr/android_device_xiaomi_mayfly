@@ -19,13 +19,8 @@ $(call inherit-product, device/xiaomi/sm8450-common/common.mk)
 $(call inherit-product, vendor/xiaomi/mayfly/mayfly-vendor.mk)
 
 # Camera
-
-# Camera
-$(call inherit-product-if-exists, vendor/xiaomi/camera/miuicamera.mk)
-
 PRODUCT_SYSTEM_PROPERTIES += \
-    ro.product.mod_device=mayfly \
-    ro.miui.notch=1 
+    ro.product.mod_device=mayfly
 
 # Display - timers
 PRODUCT_ODM_PROPERTIES += \
